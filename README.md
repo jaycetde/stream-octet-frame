@@ -12,6 +12,8 @@ Messages send using the method `frame` will be prefixed with the number of bytes
 All chunks recieved on the stream will be buffered until the full frame has been recieved, and then it
 will be emitted as a `frame` event
 
+Note - This is only designed to work with duplex streams like net.Socket.
+
 Note - The stream will automatically start to be consumed when using this method.
 
 ## Usage
@@ -33,6 +35,20 @@ var server = net.createServer(socket) {
 });
 
 ```
+
+## API
+
+```javascript
+octetFrame(stream, options)
+```
+
+### stream
+
+A duplex stream to perform octet framing on
+
+### options
+
+maxFrameSize (default 1024) - maximum number of bytes in each frame
 
 ## License
 
