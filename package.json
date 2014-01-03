@@ -1,0 +1,17 @@
+{
+  "name": "stream-octet-frame",
+  "description": "Uses octet counting to frame messages through a stream",
+  "version": "0.0.1",
+  "author": "Jayce Pulsipher <jaycemp@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JayceTDE/stream-octet-frame.git"
+  },
+  "keywords": [
+    "octet",
+    "frame",
+    "stream"
+  ],
+  "main": "./index",
+  "license": "MIT"
+}
