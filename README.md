@@ -1,6 +1,6 @@
 # stream-octet-frame
 
-    Uses octet counting to frame data through a stream
+Uses octet counting to frame data through a stream
 
 ## Installation
 
@@ -10,11 +10,11 @@ npm install stream-octet-frame
 
 ## Description
 
-    Data sent using the method `frame` will be prefixed with the number of bytes in the data.
-    All chunks recieved on the stream will be buffered until the full frame has been recieved, and then it
-    will be emitted as a `frame` event
+Data sent using the method `frame` will be prefixed with the number of bytes in the data.
+All chunks recieved on the stream will be buffered until the full frame has been recieved, and then it
+will be emitted as a `frame` event
 
-    Note - The stream will automatically start to be consumed when using this method.
+Note - The stream will automatically start to be consumed when using this method.
 
 ## Example
 
@@ -40,49 +40,49 @@ var server = net.createServer(socket) {
 
 ### octetFrame(stream, [options])
 
-    Adds `frame` function to `stream` and listens for octet framed data
+Adds `frame` function to `stream` and listens for octet framed data
 
 #### options.maxFrameSize (default: `1024`)
 
-    Maximum number of bytes in each frame
+Maximum number of bytes in each frame
 
-    Maximum value is Maximum value is 4294967295 (Math.pow(2, 32) - 1, 4gb - 1byte)
+Maximum value is Maximum value is 4294967295 (Math.pow(2, 32) - 1, 4gb - 1byte)
 
-    This may also be set on the stream:
+This may also be set on the stream:
 
-    ```javascript
-    stream.maxFrameSize = 1024;
-    ```
+```javascript
+stream.maxFrameSize = 1024;
+```
 
 #### options.readable (default: `true`)
 
-    Set to `true` to buffer data into frames
+Set to `true` to buffer data into frames
 
 #### options.writable (default: `true`)
 
-    Set to `true` to add a `frame` method to `stream`
+Set to `true` to add a `frame` method to `stream`
 
 #### options.frameEncoding
 
-    Readable stream - will call `.toString(frameEncoding)` on the frame buffer before emitting the `frame` event
+Readable stream - will call `.toString(frameEncoding)` on the frame buffer before emitting the `frame` event
 
-    Writable stream - will use as the default encoding when converting a string into a buffer.  Specifying an
-    encoding when calling `frame` will overwrite this value
+Writable stream - will use as the default encoding when converting a string into a buffer.  Specifying an
+encoding when calling `frame` will overwrite this value
 
-    This may also be set on the stream:
+This may also be set on the stream:
 
-    ```javascript
-    stream.frameEncoding = 'utf8';
-    ```
+```javascript
+stream.frameEncoding = 'utf8';
+```
 
 ### STREAM.frame(data, [encoding])
 
-    Converts `data` to a buffer with `encoding`, frames the data, and write the frame and data to the stream
+Converts `data` to a buffer with `encoding`, frames the data, and write the frame and data to the stream
 
-    data - A string or buffer
-    encoding - Encoding to use when converting `data` to a buffer.  Overrides `options.frameEncoding`
+data - A string or buffer
+encoding - Encoding to use when converting `data` to a buffer.  Overrides `options.frameEncoding`
 
-    Only available if stream is writable and options.writable is `true`
+Only available if stream is writable and options.writable is `true`
 
 ### Event: 'frame'
 
@@ -92,10 +92,10 @@ Passes a Buffer object containing the data frame.  If `options.frameEncoding` is
 
 ### Do not use `STREAM.setEncoding()`
 
-    Do not use `STREAM.setEncoding()` when using this to frame data.  The encoding will try to convert the raw bytes into strings,
-    mangling the octet count and data byte cound in the process.  The [stream docs](http://nodejs.org/api/stream.html#stream_readable_setencoding_encoding)
-    suggest to always use `setEncoding` when reading the data as strings, but this is just to buffer parts of the data enough to
-    properly encode multi-byte characters.  When framing data, all of the data will be buffered and encoding should work as expected.
+Do not use `STREAM.setEncoding()` when using this to frame data.  The encoding will try to convert the raw bytes into strings,
+mangling the octet count and data byte cound in the process.  The [stream docs](http://nodejs.org/api/stream.html#stream_readable_setencoding_encoding)
+suggest to always use `setEncoding` when reading the data as strings, but this is just to buffer parts of the data enough to
+properly encode multi-byte characters.  When framing data, all of the data will be buffered and encoding should work as expected.
 
 ## License
 
