@@ -1,7 +1,7 @@
 {
   "name": "stream-octet-frame",
   "description": "Uses octet counting to frame messages through a stream",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Jayce Pulsipher <jaycemp@gmail.com>",
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
     "stream"
   ],
   "devDependencies": {
-      "mocha": "*"
+    "mocha": "*"
   },
   "main": "./index",
   "license": "MIT"
